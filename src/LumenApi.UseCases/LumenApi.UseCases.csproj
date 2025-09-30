@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\IExamInterface.cs" />
+    <Compile Remove="Interfaces\IPaymentInerface_old.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DinkToPdf" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" />
+    <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LumenApi.Core\LumenApi.Core.csproj" />
+  </ItemGroup>
+
+</Project>
