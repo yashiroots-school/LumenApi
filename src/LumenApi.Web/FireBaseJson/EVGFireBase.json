@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1067274559134",
+    "project_id": "evgmemorial-5f44a",
+    "storage_bucket": "evgmemorial-5f44a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067274559134:android:3520e8cfe0ee2df8b5658f",
+        "android_client_info": {
+          "package_name": "com.irootsm.evgmemorial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIHEkDnRMreh2IRKUxe57E26XkmJ82yFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
