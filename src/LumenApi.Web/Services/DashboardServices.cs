@@ -1,5 +1,6 @@
 ﻿//using System.Data.Entity;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using LumenApi.Core.Interfaces;
 using LumenApi.Core.Services;

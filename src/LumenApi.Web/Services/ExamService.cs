@@ -23,6 +23,8 @@ using LumenApi.Web.Models.Exam.ReportCardModel;
 using System.Globalization;
 using System.ComponentModel.DataAnnotations;
 namespace LumenApi.Web.Services;
+
+using LumenApi.Web.Models.StudentView;
 using LumenApi.Web.ViewModels;
 
 public class ExamService(Lumen090923Context lumen, IConverter converter) : IExamInterface

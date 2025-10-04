@@ -45,6 +45,7 @@ public  class MobileAppVersions
   public DateTime? Date { get; set; }
 
   
+
   [Required]
   [DataType(DataType.DateTime)]
   public DateTime CurrentDate { get; set; } // save current date+time
@@ -81,6 +82,7 @@ public class tbl_Notice
   [Required]
   [DataType(DataType.Date)]
   public DateTime NoticeDate { get; set; }
+
 
   [Required]
   [DataType(DataType.DateTime)]

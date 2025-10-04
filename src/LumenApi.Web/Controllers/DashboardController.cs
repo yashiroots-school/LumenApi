@@ -16,7 +16,7 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
   [HttpPost("AdminDashBoard")]
   public async Task<IApiResponse> AdminDashBoartd(string RoleName)
   {
-     res = new ApiResponse();
+    res = new ApiResponse();
     try
     {
       res = await _dashBoard.DashBoard(RoleName);
@@ -53,7 +53,7 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
         ResponseCode = "500"
       });
     }
-   // return res;
+    // return res;
   }
   [HttpGet("MobileAppVersion")]
   public IActionResult GetMobileAppVersions()
@@ -110,12 +110,12 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
     // return res;
   }
   [HttpPost("TimeTable")]
-  public async Task<IApiResponse> TimeTable(int classId=0, int SectionId=0, int StaffId=0)
+  public async Task<IApiResponse> TimeTable(int classId = 0, int SectionId = 0, int StaffId = 0)
   {
     res = new ApiResponse();
     try
     {
-      res = await _dashBoard.GetTimeTable( classId,  SectionId,  StaffId);
+      res = await _dashBoard.GetTimeTable(classId, SectionId, StaffId);
     }
     catch (Exception ex)
     {
@@ -124,7 +124,7 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
     }
     return res;
   }
-}
+
   [HttpPost("DeleteCalendarEvents")]
   public async Task<IApiResponse> DeleteCalendarEvents(int Id)
   {
@@ -181,5 +181,6 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
     return res;
   }
 }
+
 
 
