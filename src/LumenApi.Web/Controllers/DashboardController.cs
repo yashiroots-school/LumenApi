@@ -180,6 +180,78 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
     }
     return res;
   }
+  [HttpGet("GetCalendarEvent")]
+  public async Task<IApiResponse> GetCalendarEvent()
+  {
+    IApiResponse res = new ApiResponse();
+    try
+    {
+
+      res = await _dashBoard.GetCalenderEvents();
+
+    }
+    catch (Exception ex)
+    {
+      res.Msg = ex.Message;
+      res.ResponseCode = "500";
+
+    }
+    return res;
+  }
+  [HttpGet("GetNotice")]
+  public async Task<IApiResponse> GetNotice()
+  {
+    IApiResponse res = new ApiResponse();
+    try
+    {
+
+      res = await _dashBoard.GetNotice();
+
+    }
+    catch (Exception ex)
+    {
+      res.Msg = ex.Message;
+      res.ResponseCode = "500";
+
+    }
+    return res;
+  }
+  [HttpPost("AddCalendarEvent")]
+  public async Task<IApiResponse> AddCalendarEvent(tbl_CalendarEvents _CalendarEvents)
+  {
+    IApiResponse res = new ApiResponse();
+    try
+    {
+
+      res = await _dashBoard.AddCalendarEvent(_CalendarEvents);
+
+    }
+    catch (Exception ex)
+    {
+      res.Msg = ex.Message;
+      res.ResponseCode = "500";
+
+    }
+    return res;
+  }
+  [HttpPost("DeleteNotice")]
+  public async Task<IApiResponse> DeleteNotice(int Id)
+  {
+    IApiResponse res = new ApiResponse();
+    try
+    {
+
+      res = await _dashBoard.DeleteEvent(Id);
+
+    }
+    catch (Exception ex)
+    {
+      res.Msg = ex.Message;
+      res.ResponseCode = "500";
+
+    }
+    return res;
+  }
 }
 
 

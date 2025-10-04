@@ -1,5 +1,6 @@
 ﻿//using System.Data.Entity;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using LumenApi.Core.Interfaces;
@@ -23,6 +24,7 @@ public interface IDashBoardService
   public Task<IApiResponse> GetEventsByDate(string date);
   public Task<IApiResponse> GetNotice();
   public Task<IApiResponse> AddNoticeAsync(tbl_Notice notice);
+  Task<IApiResponse> DeleteNotice(int id);
 
 }
 public class DashboardServices(Lumen090923Context lumen) : IDashBoardService
@@ -555,6 +557,33 @@ public class DashboardServices(Lumen090923Context lumen) : IDashBoardService
       res.Msg = ex.Message;
     }
     return res;
+  }
+  public async Task<IApiResponse> DeleteNotice(int id)
+  {
+    var res = new ApiResponse();
+    try
+    {
+      var notice = await _lumen.tbl_Notice.FirstOrDefaultAsync(x => x.ID == id);
+      if (notice == null)
+      {
+        res.Msg = "Record not found";
+        res.ResponseCode = "200";
+        //return NotFound(new { success = false, message = "Record not found" });
+      }
+      else
+      {
+        _lumen.tbl_Notice.Remove(notice);
+        await _lumen.SaveChangesAsync();
+        res.Msg = "Notice Deleted Successfully !";
+      }
+    }
+    catch (Exception ex)
+    {
+      res.Msg=ex.Message;
+      res.ResponseCode = "500";
+    }
+    return res;
+    //return Ok(new { success = true });
   }
   private string TimeSpanToString(TimeSpan time)
   {
