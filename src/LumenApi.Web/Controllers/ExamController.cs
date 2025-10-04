@@ -566,4 +566,15 @@ public class ExamController(IExamInterface examInterface, IActionContextAccessor
   //  var printReportCard = await _reportCardService.GetReportCardDataAsync(studentId, termId, batchId);
 
 
+  //  };
+  //  pdf.WkhtmlPath = "H://";
+  //  var pdfFile = await pdf.BuildFile(ControllerContext);
+
+  //  return File(pdfFile, "application/pdf", "ReportCard.pdf");
+  //}
+  //[HttpGet]
+  //public IActionResult GetReportCard(int StudentId, int TermId, int BatchId)
+  //{
+  //  return RedirectToAction("Print", "ReportCard", new { StudentId, TermId, BatchId });
+  //}
 }

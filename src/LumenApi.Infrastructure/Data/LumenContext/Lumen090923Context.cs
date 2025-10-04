@@ -315,8 +315,6 @@ public partial class Lumen090923Context : DbContext///IdentityDbContext<Applicat
   public DbSet<Tbl_HoldDetail> Tbl_HoldDetail { get; set; }
   public DbSet<Tbl_FireBaseToken> Tbl_FireBaseToken { get; set; }
   public DbSet<Tbl_NotificationLog> Tbl_NotificationLog { get; set; }
-  public virtual DbSet<tbl_CalendarEvents> tbl_CalendarEvents { get; set; }
-  public DbSet<tbl_Notice> tbl_Notice { get; set; }
   //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
   //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   //    => optionsBuilder.UseSqlServer("Server=PRG1131\\SQLEXPRESS;Database=lumen090923;Trusted_Connection=True;TrustServerCertificate=true;integrated security=true;Command Timeout=3600;");

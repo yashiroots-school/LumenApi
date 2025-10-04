@@ -1,7 +1,5 @@
 ﻿//using System.Data.Entity;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using LumenApi.Core.Interfaces;
 using LumenApi.Core.Services;
@@ -86,7 +84,95 @@ public class DashboardServices(Lumen090923Context lumen) : IDashBoardService
     res.ResponseCode = "200";
     return res;
   }
- 
+  //public async Task<IApiResponse> GetStudentAttendanceReport(DateTime startDate, DateTime endDate, int classId, int sectionId, int fromYear, int toYear, int studentId = 0)
+  //{
+  //  IApiResponse res = new ApiResponse();
+  //  var response = new
+  //  {
+  //    DateRangeAttendance = new List<object>(), // Placeholder for date range attendance
+  //    YearlyAttendanceSummary = new List<object>() // Placeholder for yearly summary
+  //  };
+
+  //  try
+  //  {
+  //    // Fetch attendance between the given date range and studentId filter if provided
+  //    var dateRangeAttendance = await _lumen.TblStudentAttendances
+  //      .Where(x =>
+  //              x.CreatedDate != null &&
+  //      IsWithinDateRange(x.CreatedDate, startDate, endDate) &&
+  //              x.ClassId == classId &&
+  //              x.SectionId == sectionId &&
+  //              (studentId == 0 || x.StudentRegisterId == studentId)
+  //          )
+  //        .Select(x => new
+  //        {
+  //          x.AttendanceId,
+  //          x.ClassName,
+  //          x.SectionName,
+  //          x.StudentRegisterId,
+  //          x.StudentName,
+  //          x.CreatedDate,
+  //          x.MarkFullDayAbsent,
+  //          x.MarkHalfDayAbsent,
+  //          x.Others
+  //        })
+  //        .ToListAsync();
+
+  //    // Fetch attendance summary for the year range with studentId filter if provided
+  //    var yearlyAttendanceSummary = await _lumen.TblStudentAttendances
+  //        .Where(x => x.CreatedDate != null && TryParseAndCheckDate(x.CreatedDate, new DateTime(fromYear, 1, 1), new DateTime(toYear, 12, 31))
+  //                    && (studentId == 0 || x.StudentRegisterId == studentId))
+  //        .GroupBy(x => new
+  //        {
+  //          CreatedYear = DateTime.ParseExact(x.CreatedDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year,  //DateTime.ParseExact(x.CreatedDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Year,
+  //          CreatedMonth = DateTime.ParseExact(x.CreatedDate, "dd/MM/yyyy", CultureInfo.InvariantCulture).Month
+  //        })
+  //        .Select(g => new
+  //        {
+  //          Year = g.Key.CreatedYear,
+  //          Month = g.Key.CreatedMonth,
+  //          TotalPresent = g.Count(x => x.MarkFullDayAbsent == "true"), // Correct column name here
+  //          TotalAbsent = g.Count(x => x.MarkFullDayAbsent == "false"), // Correct column name here
+  //          TotalLeave = 0//g.Count(x => x.AttendanceStatus == "L") // Correct column name here
+  //        })
+  //        .OrderBy(x => x.Year)
+  //        .ThenBy(x => x.Month)
+  //        .ToListAsync();
+
+  //    // Prepare the response
+  //    res.Data = new
+  //    {
+  //      DateRangeAttendance = dateRangeAttendance,
+  //      YearlyAttendanceSummary = yearlyAttendanceSummary
+  //    };
+
+
+  //    res.Msg = "Data fetched successfully.";
+  //    res.ResponseCode = "200";
+  //  }
+  //  catch (Exception ex)
+  //  {
+  //    res.Msg = ex.Message;
+  //    res.ResponseCode = "500";
+  //  }
+  //  return res;
+  //}
+  //private static bool IsWithinDateRange(string dateString, DateTime startDate, DateTime endDate)
+  //{
+  //  if (DateTime.TryParse(dateString, out DateTime createdDate))
+  //  {
+  //    return createdDate >= startDate && createdDate <= endDate;
+  //  }
+  //  return false;
+  //}
+  //private static bool TryParseAndCheckDate(string dateString, DateTime startDate, DateTime endDate)
+  //{
+  //  if (DateTime.TryParse(dateString, out DateTime createdDate))
+  //  {
+  //    return createdDate >= startDate && createdDate <= endDate;
+  //  }
+  //  return false;
+  //}
   public IApiResponse GetStudentAttendanceReport(DateTime startDate, DateTime endDate, int classId, int sectionId, int fromYear, int toYear, int studentId = 0)
   {
     IApiResponse res = new ApiResponse();
@@ -476,6 +562,7 @@ public class DashboardServices(Lumen090923Context lumen) : IDashBoardService
   }
   private static bool TryParseAndCheckDate(string dateString, DateTime startDate, DateTime endDate)
   {
+    // Parsing the date string to DateTime using the dd/MM/yyyy format
     if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime createdDate))
     {
       return createdDate >= startDate && createdDate <= endDate;
