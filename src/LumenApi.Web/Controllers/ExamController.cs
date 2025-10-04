@@ -577,4 +577,21 @@ public class ExamController(IExamInterface examInterface, IActionContextAccessor
   //{
   //  return RedirectToAction("Print", "ReportCard", new { StudentId, TermId, BatchId });
   //}
+  [HttpGet("GetExamTimeTable")]
+  public async Task<IApiResponse> GetExamTimeTable(int? BatchId = null, int? TermId = null)
+  {
+    res = new ApiResponse();
+    try
+    {
+      var result = await _examInterface.GetExamTimeTable(BatchId, TermId);
+      res = result;
+    }
+    catch (Exception ex)
+    {
+
+      res.Msg = ex.Message;
+      res.ResponseCode = "500";
+    }
+    return res;
+  }
 }

@@ -32,4 +32,5 @@ public interface IExamInterface
   Task<IApiResponse> GetAssignmentById(int id);
   Task<IApiResponse> DeleteAssignment(int id);
   Task<IApiResponse> GetStaffSubjects(int staffId, int classId, int sectionId);
+  Task<IApiResponse> GetExamTimeTable(int? BatchId = null, int? TermId = null);
 }
