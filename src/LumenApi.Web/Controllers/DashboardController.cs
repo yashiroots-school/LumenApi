@@ -124,60 +124,7 @@ public class DashboardController(IDashBoardService dashBoard) : Controller
     }
     return res;
   }
-  [HttpGet("GetCalendarEvents")]
-  public async Task<IApiResponse> GetCalendarEvents()
-  {
-    IApiResponse res = new ApiResponse();
-    try
-    {
-
-      res = await _dashBoard.GetCalenderEvents();
-
-    }
-    catch (Exception ex)
-    {
-      res.Msg = ex.Message;
-      res.ResponseCode = "500";
-
-    }
-    return res;
-  }
-  [HttpGet("GetNotice")]
-  public async Task<IApiResponse> GetNotice()
-  {
-    IApiResponse res = new ApiResponse();
-    try
-    {
-
-      res = await _dashBoard.GetNotice();
-
-    }
-    catch (Exception ex)
-    {
-      res.Msg = ex.Message;
-      res.ResponseCode = "500";
-
-    }
-    return res;
-  }
-  [HttpPost("SaveCalendarEvents")]
-  public async Task<IApiResponse> SaveCalendarEvents(tbl_CalendarEvents tbl_CalendarEvents)
-  {
-    IApiResponse res = new ApiResponse();
-    try
-    {
-
-      res = await _dashBoard.AddCalendarEvent(tbl_CalendarEvents);
-
-    }
-    catch (Exception ex)
-    {
-      res.Msg = ex.Message;
-      res.ResponseCode = "500";
-
-    }
-    return res;
-  }
+}
   [HttpPost("DeleteCalendarEvents")]
   public async Task<IApiResponse> DeleteCalendarEvents(int Id)
   {

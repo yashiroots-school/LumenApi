@@ -51,6 +51,43 @@ public  class MobileAppVersions
 
   // REMOVE public int DaysAgo { get; set; }
 }
+public class tbl_CalendarEvents
+{
+  [Key]
+  public int ID { get; set; }   // Primary key
+
+  [Required]
+  // [StringLength(255)]
+  public string EventName { get; set; } = string.Empty;
+
+  [Required]
+  [DataType(DataType.Date)]
+  public DateTime EventDate { get; set; }
+
+  [Required]
+  [DataType(DataType.Time)]
+  public TimeSpan EventTime { get; set; }
+}
+
+public class tbl_Notice
+{
+  [Key]
+  public int ID { get; set; }
+
+  [Required]
+  [StringLength(255)]
+  public string NoticeName { get; set; } = string.Empty;
+
+  [Required]
+  [DataType(DataType.Date)]
+  public DateTime NoticeDate { get; set; }
+
+  [Required]
+  [DataType(DataType.DateTime)]
+  public DateTime CurrentDate { get; set; } // save current date+time
+
+  // REMOVE public int DaysAgo { get; set; }
+}
 public class NoticeDto
 {
   public string NoticeName { get; set; } = string.Empty;
